@@ -7,9 +7,9 @@ const pizzaController = {
         Pizza.find({})
         .populate({
             path: 'comments',
-            select: '-_v'
+            select: '-__v'
         })
-        .select('-_v')
+        .select('-__v')
         .sort({ _id: -1 })
         .then(dbPizzaData => res.json(dbPizzaData))
         .catch(err => {
@@ -19,13 +19,13 @@ const pizzaController = {
     },
 
     //get one pizza by id
-    getPizzaById({params},res){
+    getPizzaById({params}, res){
         Pizza.findOne({ _id: params.id})
         .populate({
             path: 'comments',
-            select: '-_v'
+            select: '-__v'
         })
-        .select('-_v')
+        .select('-__v')
         .then(dbPizzaData => {
             //if no pizza found throw err
             if(!dbPizzaData){
